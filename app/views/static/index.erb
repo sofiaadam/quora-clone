@@ -1,12 +1,19 @@
 <h1> Quest Ions </h1>
 
+<a href="/users/:id"><h3>My Profile</h3></a>
 <h2>Login</h2>
-<form method=post action=/login>
+
+<div id="login-button">
+    <form method=post action=/login>
     <input type=text placeholder="Email" name="user[email]"><br>
     <input type=password placeholder="Password" name="user[password]"></br>
     <input type=submit value="Login">
 </form>
+</div>
 
+
+<a href="/questions"><h3>View all questions</h3></a>
 <h3>If you don't have an account, <a href="/signup">sign up!</a></h3>
+
 
 

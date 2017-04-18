@@ -1,8 +1,13 @@
-get '/question/new' do
+get '/questions' do
+    @question = Question.all.reverse
+    erb :"question/index"
+end
+
+get '/questions/new' do
     erb :'question/new'
 end
 
-post '/question/new' do
+post '/questions/new' do
     question = Question.new(params[:question])
     question.user_id = current_user.id
     if question.save
@@ -13,6 +18,24 @@ post '/question/new' do
     end
 end
 
-get '/questions' do
-    erb :"question/index"
+get '/questions/:id' do
+    @question = Question.find(params[:id])
+    erb :'/question/show'
 end
+
+
+post '/questions/:id/answer' do  #PUSHING COMMENTS IN DB BUT IDK WHATSOWRONGWITHYOU
+    @question = Question.find(params[:id])
+    answer = Answer.new(answer: params[:answer])
+    answer.question_id = @question.user_id
+    answer.user_id = current_user.id
+    if answer.save
+        flash[:img] = "Answer submitted"
+        redirect '/question/#{question.id}'
+    else
+        flash[:img] = "Something went wrong"
+        redirect '/question/#{question.id}'
+    end
+end
+
+

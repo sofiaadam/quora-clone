@@ -6,8 +6,9 @@
 		<div id="error">
 		<%= flash[:img] %>
 		</div>
-		<a href="/">Homepage</a>
+		<a id="back-homepage" href="/">Homepage</a>
 		<p>
+		
 		<% if logged_in? %>
 			<%= current_user.fullname %>
 			<form action="/logout" method="post">

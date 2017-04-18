@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 	before_create :validating_password, :validating_email
 	has_secure_password
 
+	has_many :questions
+	has_many :answers
+
 	def validating_password
 		unless self.password.length >= 6
 			errors.add(:password, "length is too short.")
