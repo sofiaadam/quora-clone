@@ -1,1 +1,9 @@
-show selected question page with comments.
+
+<%= params[:id] %>
+<h2><%= @question.title %></h2>
+
+<form action="/questions/<%=@question.id%>/answer" method="post">
+    <input type=text placeholder='Leave a comment' name='answer'><br>
+    <input type=submit value='Reply'>
+</form>
+<p><%=flash[:img]%></p>

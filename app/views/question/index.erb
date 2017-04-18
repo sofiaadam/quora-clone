@@ -1,1 +1,6 @@
-suppoosed to show magic here as in questions
+
+<% @question.each do |x| %>
+<a href="/questions/<%= x.id %>"<h3>Title: <%= x.title %></h3></a>
+
+<p>Description: <%=x.description %></p>
+<%end%>
