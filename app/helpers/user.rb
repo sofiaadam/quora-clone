@@ -5,10 +5,18 @@ helpers do
     if session["user"]
       @current_user ||= User.find_by_id(session["user"])
     end
+    
+    # capture(&block) if session["users"]
   end
 
   # Returns true if current_user exists, false otherwise
   def logged_in?
+    # capture(&block) unless session["users"]
     !current_user.nil?
   end
 end
+
+
+
+
+

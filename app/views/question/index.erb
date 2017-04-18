@@ -1,6 +1,6 @@
 
 <% @question.each do |x| %>
-<a href="/questions/<%= x.id %>"<h3>Title: <%= x.title %></h3></a>
+<h2><a href="/questions/<%= x.id %>">Title: <%= x.title %></a></h2>
 
 <p>Description: <%=x.description %></p>
 <%end%>

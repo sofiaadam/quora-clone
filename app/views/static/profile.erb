@@ -1,10 +1,19 @@
 <h5>User's name:</h5>
-<%= @user.fullname %>
+<%= current_user.fullname %>
 
+<h3>Profile feed</h3>
+<% if current_user.questions.count == 0 %>
+<% else %>
+    <% current_user.questions.each do |q| %>
+<h4><a href="/questions/<%= q.id %>">Title: <%= q.title %></a></h4><p>
+<% end %>
+<% end %>
+<h4>Go ask some questions, you fetus!</h4>
 
-
-
-
-
-
-
+<% if current_user.answers.count == 0 %>
+<h4> Socialise, young one. </h3>
+<% else %>
+<% current_user.answers.each do |x| %>
+    <%= x.answer %><br>
+<%end%>
+<%end%>
