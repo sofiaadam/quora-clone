@@ -24,17 +24,17 @@ get '/questions/:id' do
 end
 
 
-post '/questions/:id/answer' do  #PUSHING COMMENTS IN DB BUT IDK WHATSOWRONGWITHYOU
+post '/questions/:id/answer' do  
     @question = Question.find(params[:id])
     answer = Answer.new(answer: params[:answer])
-    answer.question_id = @question.user_id
+    answer.question_id = @question.id
     answer.user_id = current_user.id
     if answer.save
         flash[:img] = "Answer submitted"
-        redirect '/question/#{question.id}'
+        redirect "/questions/#{params[:id]}"
     else
         flash[:img] = "Something went wrong"
-        redirect '/question/#{question.id}'
+        redirect "/questions/#{params[:id]}"
     end
 end
 

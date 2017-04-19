@@ -1,6 +1,19 @@
 <a id="back-questions" href="/questions">Back</a>
 <%= params[:id] %>
 <h2><%= @question.title %></h2>
+<p><%= @question.description %></p>
+
+<hr>
+<form action="/questions/<%=@question.id%>/answer" method="post">
+    <input type=text placeholder='Leave a comment' name='answer'><br>
+    <input type=submit value='Reply'>
+</form>
+<h4> Comments </h4>
+<% @question.answers.each do |a| %>
+<p> <%= a.answer %> </p>
+<%end%>
+
+
 
 <form action="/questions/<%=@question.id%>/answer" method="post">
     <input type=text placeholder='Leave a comment' name='answer'><br>
