@@ -2,18 +2,19 @@
 <%= current_user.fullname %>
 
 <h3>Profile feed</h3>
+<h4>Go ask some questions, you fetus! not working</h4>
 <% if current_user.questions.count == 0 %>
 <% else %>
     <% current_user.questions.each do |q| %>
 <h4><a href="/questions/<%= q.id %>">Title: <%= q.title %></a></h4><p>
 <% end %>
 <% end %>
-<h4>Go ask some questions, you fetus!</h4>
-
+<hr>
 <% if current_user.answers.count == 0 %>
-<h4> Socialise, young one. </h3>
+<h3> Socialise, young one. </h3>
 <% else %>
+<h3> keyboard warrior 4Laifu </h3>
 <% current_user.answers.each do |x| %>
-    <%= x.answer %><br>
+    <%= x.answer %><p><a href="/questions/<%= x.question_id %>">Go to answer</a></p>
 <%end%>
 <%end%>
