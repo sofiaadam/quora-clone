@@ -2,5 +2,6 @@
 <% @question.each do |x| %>
 <h2><a href="/questions/<%= x.id %>">Title: <%= x.title %></a></h2>
 
-<p>Description: <%=x.description %></p>
+<p>Description: <%=x.description %> <strong> -----> </strong>
+Asked by: <%= "#{User.find(x.user_id).fullname}" %></p>
 <%end%>
