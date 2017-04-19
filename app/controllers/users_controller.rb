@@ -10,13 +10,14 @@ post '/signup' do
   @user = User.new(params[:user])
   if @user.save
     flash[:img] = "<h1>user has been created.</h2>"
+    redirect "/"
     else
     flash[:img] = "<h2> There is an error </h2>"
     @err_email = "Email: " + user.errors[:email].join(",")
     flash[:img] = @err_email
     @err_pass = "Password: " + user.errors[:password].join(",")
     flash[:img] = @err_pass
-    erb :"static/signup"
+    erb :"/"
   end
 end  
 

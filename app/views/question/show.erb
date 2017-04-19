@@ -1,6 +1,7 @@
 <a id="back-questions" href="/questions">Back</a>
 <h2><%= @question.title %></h2>
 <p><%= @question.description %></p>
+<h4>Curious: <%="#{User.find(@question.user_id).fullname}"%></h4>
 
 <hr>
 <form action="/questions/<%=@question.id%>/answer" method="post">
@@ -12,8 +13,7 @@
 <p><%= a.answer %> </p>
 <h6> Answered: <%= "#{User.find(a.user_id).fullname}"%> </h6>   
 <%end%>
-
-
+    
 
 <form action="/questions/<%=@question.id%>/answer" method="post">
     <input type=text placeholder='Leave a comment' name='answer'><br>
