@@ -4,4 +4,6 @@
 
 <p>Description: <%=x.description %> <strong> -----> </strong>
 Asked by: <%= "#{User.find(x.user_id).fullname}" %></p>
+<h4>Curious: <%="#{User.find(x.user_id).fullname}"%></h4>
+
 <%end%>

@@ -1,3 +1,4 @@
+
 get '/questions' do
     @question = Question.all.reverse
     erb :"question/index"
@@ -24,7 +25,7 @@ get '/questions/:id' do
 end
 
 
-post '/questions/:id/answer' do  
+post '/questions/:id/answer' do 
     @question = Question.find(params[:id])
     answer = Answer.new(answer: params[:answer])
     answer.question_id = @question.id
