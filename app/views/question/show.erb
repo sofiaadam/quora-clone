@@ -1,5 +1,4 @@
 <a id="back-questions" href="/questions">Back</a>
-<%= params[:id] %>
 <h2><%= @question.title %></h2>
 <p><%= @question.description %></p>
 
@@ -10,7 +9,8 @@
 </form>
 <h4> Comments </h4>
 <% @question.answers.each do |a| %>
-<p> <%= a.answer %> </p>
+<p><%= a.answer %> </p>
+<h6> Answered: <%= "#{User.find(a.user_id).fullname}"%> </h6>   
 <%end%>
 
 
