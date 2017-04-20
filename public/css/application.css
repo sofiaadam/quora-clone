@@ -1,0 +1,7 @@
+#question-vote *{
+    display: inline;
+}
+
+#reply-vote *{
+    display: inline;
+}
