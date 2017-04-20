@@ -14,12 +14,12 @@ post '/questions/:id/downvote' do
         @vote = QuestionVote.new(question_id: params[:id], vote_type: false, user_id: current_user.id)
         @vote.save
         redirect "/questions/#{params[:id]}"
-    elsif 
+    else
         current_vote = current_user.question_votes.find_by(question_id: params[:id])
         current_vote.destroy
         redirect "/questions/#{params[:id]}"
-    else
-        redirect "/"
+    # else
+    #     redirect "/"
     end
 end
 
@@ -33,16 +33,15 @@ end
 
 post '/questions/:id/answer/:a_id/upvote' do
     # byebug
-    current_vote = current_user.answer_votes.find_by(answer_id: params[:id])
+        # byebug
+    current_vote = current_user.answer_votes.find_by(answer_id: params[:a_id])
     if current_vote.nil?
         @vote = AnswerVote.new(answer_id: params[:a_id], vote_type: true, user_id: current_user.id)
         @vote.save
         redirect "/questions/#{params[:id]}"
-    elsif    
-        current_vote = current_user.answer_votes.find_by(answer_id: params[:id])
+    else 
+        current_vote = AnswerVote.find_by(answer_id: params[:a_id], user_id: current_user.id)
         current_vote.destroy
-        redirect "/questions/#{params[:id]}"
-    else
         redirect "/questions/#{params[:id]}"
     end
 end
