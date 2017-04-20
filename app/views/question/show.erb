@@ -1,22 +1,44 @@
+
 <a id="back-questions" href="/questions">Back</a>
 <h2><%= @question.title %></h2>
 <p><%= @question.description %></p>
 <h4>Curious: <%="#{User.find(@question.user_id).fullname}"%></h4>
 
-<hr>
-<form action="/questions/<%=@question.id%>/answer" method="post">
-    <input type=text placeholder='Leave a comment' name='answer'><br>
-    <input type=submit value='Reply'>
+<div id="question-vote">
+    <form method= "post"        action="/questions/<%=@question.id%>/downvote">
+    <input type="submit" value="Downvote | <%= QuestionVote.where(vote_type: false, question_id: @question.id).count %>">
 </form>
-<h4> Comments </h4>
-<% @question.answers.each do |a| %>
-<p><%= a.answer %> </p>
-<h6> Answered: <%= "#{User.find(a.user_id).fullname}"%> </h6>   
-<%end%>
-    
+</div>
 
+<hr>
+
+
+<h4> Comments </h4>
+
+<% @question.answers.each do |a| %>
+    <p><%= a.answer %> </p>
+    <h6> Answered: <%= User.find(a.user_id).fullname%> </h6>
+
+    <div id="reply-vote">
+        <form method= "post" action="/questions/<%=a.question_id%>/answer/<%= a.id%>/upvote">
+        <input type="submit" value="Upvote | <%= AnswerVote.where(vote_type: true, answer_id: a.id).count %>">
+        </form>
+    
+ <p>or</p>    
+    <form method= "post"        action="/questions/<%=a.question_id%>/answer/<%=a.id%>/downvote">
+    <input type="submit" value="Downvote">
+</form>
+
+</div>
+<br>
+<%end%>
+
+<br>
+<div id="reply-form">
 <form action="/questions/<%=@question.id%>/answer" method="post">
     <input type=text placeholder='Leave a comment' name='answer'><br>
     <input type=submit value='Reply'>
 </form>
+</div>
 <p><%=flash[:img]%></p>
+
