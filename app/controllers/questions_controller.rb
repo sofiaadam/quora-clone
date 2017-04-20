@@ -1,6 +1,6 @@
 
 get '/questions' do
-    @question = Question.all.reverse
+    @question = Question.all.order('created_at DESC')
     erb :"question/index"
 end
 
