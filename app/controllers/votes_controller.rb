@@ -13,14 +13,13 @@ post '/questions/:id/downvote' do
     if current_vote.nil?
         @vote = QuestionVote.new(question_id: params[:id], vote_type: false, user_id: current_user.id)
         @vote.save
-        redirect "/questions/#{params[:id]}"
-    elsif 
+        # redirect "/questions/#{params[:id]}"
+    else
         current_vote = current_user.question_votes.find_by(question_id: params[:id])
         current_vote.destroy
-        redirect "/questions/#{params[:id]}"
-    else
-        redirect "/"
+        # redirect "/questions/#{params[:id]}"
     end
+    return QuestionVote.where(question_id: params[:id], vote_type: false).count.to_json
 end
 
 # delete '/questions/:id/downvote' do

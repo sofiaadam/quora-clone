@@ -1,7 +1,7 @@
-#question-vote *{
+.question-vote *{
     display: inline;
 }
 
-#reply-vote *{
+.reply-vote *{
     display: inline;
 }
