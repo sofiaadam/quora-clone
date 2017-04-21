@@ -36,14 +36,16 @@ post '/questions/:id/answer/:a_id/upvote' do
     if current_vote.nil?
         @vote = AnswerVote.new(answer_id: params[:a_id], vote_type: true, user_id: current_user.id)
         @vote.save
-        redirect "/questions/#{params[:id]}"
+    end
+
+    # redirect "/questions/#{params[:id]}"
     # elsif    
     #     current_vote = current_user.answer_votes.find_by(answer_id: params[:a_id])
     #     current_vote.destroy
     #     redirect "/questions/#{params[:id]}"
     # else
     #     redirect "/questions/#{params[:id]}"
-    end
+return AnswerVote.where(answer_id: params[:id], vote_type: true).count.to_json
 end
 
 post '/questions/:id/answer/:a_id/downvote' do
@@ -52,8 +54,9 @@ post '/questions/:id/answer/:a_id/downvote' do
         current_vote.destroy
         # @vote = current_user.answer_votes.new(answer_id: params[:a_id], vote_type: false)
         # @vote.save
-        redirect "/questions/#{params[:id]}"
-    else
-        redirect "/questions/#{params[:id]}"
+    #     redirect "/questions/#{params[:id]}"
+    # else
+    #     redirect "/questions/#{params[:id]}"
     end
+return AnswerVote.where(answer_id: params[:id], vote_type: true).count.to_json
 end

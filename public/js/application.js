@@ -1,26 +1,68 @@
-$(document).ready(function() {
-    $('.question-vote').submit(function(f){
-        f.preventDefault();
-        var q_id = $(f.target).data('qid');
-        
-    $.ajax({
-        url: "/questions/" + q_id + "/downvote",
-        method: "post",
-        dataType: "text",
+$(document).ready(function () {
+    $('.question-vote').submit(function (e) {
+        e.preventDefault();
+        var q_id = $(e.target).data('qid');
 
-        beforeSend: function() {
-            $(f.target).find('input').attr('disable', true)
-        },
+        $.ajax({
+            url: "/questions/" + q_id + "/downvote",
+            method: "post",
+            dataType: "json",
 
-        afterSend: function() {
-            $(f.target).find("input").attr('disabled', false)
-        },
+            beforeSend: function () {
+                $(e.target).find('input').attr('disable', true)
+            },
 
-        success: function(data){
-            console.log(data)
-            $(f.target).find('input').attr('value', 'Downvote | ' + data)
-            
-        }
-    })
+            afterSend: function () {
+                $(e.target).find("input").attr('disabled', false)
+            },
+
+            success: function (data) {
+                console.log(data)
+                $(e.target).find('input').attr('value', 'Downvote | ' + data)
+            }
+        })
     });
-});
+
+    $("#reply-voteup").submit(function (f) {
+        f.preventDefault();
+        var quest_id = $(f.target).data("aqid");
+        var ans_id = $(f.target).data("aid");
+
+
+        $.ajax({
+            url: "/questions/" + quest_id + "/answer/" + ans_id + "/upvote",
+            method: "post",
+            dataType: "json",
+
+            beforeSend: function () {
+                $(f.target).find('input').attr('disable', true)
+            },
+
+            afterSend: function () {
+                $(f.target).find("input").attr('disabled', false)
+            },
+
+            success: function (data) {
+                console.log(data)
+                $(f.target).find('input').attr('value', 'Upvote | ' + data)
+            }
+        })
+    });
+
+//     $.ajax(function (d) {
+//         d.preventDefault();
+//         var quest_id = $(d.target).data("aqid");
+//         var ans_id = $(d.target).data("aid");
+//         $.(ajax)
+//         url: "/questions/" + quest_id + "/answer/" + ans_id + "/downvote",
+//             method: "post",
+//             dataType: "json",
+//             // YOU STOP HERE, fucking red lines
+
+//             success: function (data) {
+//                 $(f.target).find('input').attr('value', 'Upvote | ' + data)
+//             }
+
+
+//     });
+// });
