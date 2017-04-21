@@ -19,14 +19,13 @@
     <p><%= a.answer %> </p>
     <h6> Answered: <%= User.find(a.user_id).fullname%> </h6>
 
-    <div class="reply-vote">
-        <form method= "post" action="/questions/<%=a.question_id%>/answer/<%= a.id%>/upvote">
-        <input type="submit" value="Upvote | <%= AnswerVote.where(vote_type: true, answer_id: a.id).count %>">
+    <div class="reply-upvote">
+        <form id="reply-voteup" method= "post" action="/questions/<%=a.question_id%>/answer/<%= a.id%>/upvote" data-aqid="<%=a.question_id%>" data-aid="<%=a.id%>">
+        <input id="rvote" type="submit" value="Upvote | <%= AnswerVote.where(vote_type: true, answer_id: a.id).count %>">
         </form>
-    
- <p>or</p>    
-    <form method= "post"        action="/questions/<%=a.question_id%>/answer/<%=a.id%>/downvote">
-    <input type="submit" value="Downvote">
+    <p>or</p>    
+        <form id="reply-votedown" method= "post"        action="/questions/<%=a.question_id%>/answer/<%=a.id%>/downvote">
+        <input type="submit" value="Downvote">
 </form>
 
 </div>
