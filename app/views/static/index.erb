@@ -1,19 +1,44 @@
-<h1> Quest Ions </h1>
 
-<a href="/users/:id"><h3>My Profile</h3></a>
-<h2>Login</h2>
 
-<div id="login-button">
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+        <%if current_user %>
+      <a href="/questions/new"><h3>Rant here</h3></a>
+      <a href="/questions"><h3>View all questions</h3></a>
+      <% else %>
+      <h3>If you don't have an account, <a href="/signup">sign up!</a></h3>
+      <%end%>
+    </div>
+
+<% if current_user %>
+    <div class="container">
+    <div class="col-sm-9 text-left"> 
+<h1>Latest from them Curious ones</h1><br>
+    <% @question.each do |x| %>
+     <a><%= ("<h4><a href='/questions/#{x.id}'>#{x.title}</h4>")%></a>
+      <hr>
+    <%end%>
+    </div>
+<% else %>
+<div class="login-button">
+    <h2>Login</h2>
     <form method=post action=/login>
     <input type=text placeholder="Email" name="user[email]"><br>
     <input type=password placeholder="Password" name="user[password]"></br>
     <input type=submit value="Login">
 </form>
+<%end%>
 </div>
 
-<a href="/questions/new"><h3>Rant here</h3></a>
-<a href="/questions"><h3>View all questions</h3></a>
-<h3>If you don't have an account, <a href="/signup">sign up!</a></h3>
 
 
 
+    
+    
+
+
+
+ 
+                              

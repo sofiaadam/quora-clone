@@ -28,6 +28,9 @@ gem 'rspec'
 # Adding bcrypt
 gem 'bcrypt'
 
+# Adding faker
+gem 'faker'
+
 group :development, :test do
 	# Adding shotgun for local web hosting
 	gem 'shotgun'

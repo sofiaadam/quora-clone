@@ -14,6 +14,7 @@ require 'pg'
 require 'active_record'
 require 'logger'
 require 'bcrypt'
+require 'faker'
 
 	# sinatra
 require 'sinatra'

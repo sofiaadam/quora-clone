@@ -4,6 +4,12 @@ get '/questions' do
     erb :"question/index"
 end
 
+get '/topquestions' do
+    @top_quest = QuestionVotes.all.count('vote_type DESC')
+    erb :"/"
+end
+
+
 get '/questions/new' do
     erb :'question/new'
 end

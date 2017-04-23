@@ -33,14 +33,14 @@ post '/login' do
     if @user.authenticate(params[:user][:password])
       session["user"] = @user.id
       # "<h2> Logged In </h2>"
-      erb :"static/profile"
+      redirect '/'
     else
       flash[:img] = "<h2> Wrong password </h2>"
       erb :'static/login' #YOU STOP HERE
     end
 end
 
-post '/logout' do
+get '/logout' do
   # kill a session when a user chooses to logout, for example, assign nil to a session
   # redirect to the appropriate page
   session["user"] = nil
@@ -52,3 +52,16 @@ get '/users/:id' do
   @user = User.find_by_id(params[:id])
   erb :'static/profile'
 end
+
+
+# post '/user/:id/edit' do
+# 	user = User.find(params[:id])
+# 	user.name = params[:user][:username]
+# 	user.password = params[:user][:password]
+# 	user.email = params[:user][:email]
+# 	user.save
+# 	# redirect '/user/'+params[:id]
+# 	logged_in_redirect('/user/'+params[:id], '/')
+#   end
+
+

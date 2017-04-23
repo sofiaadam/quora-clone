@@ -1,8 +1,7 @@
-
-<a id="back-questions" href="/questions">Back</a>
+<div class="container">
 <h2><%= @question.title %></h2>
-<p><%= @question.description %></p>
-<h4>Curious: <%="#{User.find(@question.user_id).fullname}"%></h4>
+<p><em><%= @question.description %></em></p>
+<h5>Curious: <%="#{User.find(@question.user_id).fullname}"%></h5>
 
 <div class="question-vote">
     <form method= "post"        action="/questions/<%=@question.id%>/downvote" data-qid ="<%=@question.id%>">

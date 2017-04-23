@@ -1,6 +1,12 @@
+<div class="col-sm-1"></div>
+<div class="col-sm-2 sidenav">
 <h5>User's name:</h5>
 <%= current_user.fullname %>
+</div>
 
+
+<div class="text-left">
+<div class="col-sm-9">
 <h3>Profile feed</h3>
 <h4>Go ask some questions, you fetus! not working</h4>
 <% if current_user.questions.count == 0 %>
@@ -18,3 +24,5 @@
     <%= x.answer %><p><a href="/questions/<%= x.question_id %>">Go to answer</a></p>
 <%end%>
 <%end%>
+</div>
+

@@ -28,7 +28,7 @@ $(document).ready(function () {
         var quest_id = $(f.target).data("aqid");
         var ans_id = $(f.target).data("aid");
 
-
+        
         $.ajax({
             url: "/questions/" + quest_id + "/answer/" + ans_id + "/upvote",
             method: "post",
@@ -39,7 +39,7 @@ $(document).ready(function () {
             },
 
             afterSend: function () {
-                $(f.target).find("input").attr('disabled', false)
+                $(f.target).find("input").attr('disabled', 'disabled')
             },
 
             success: function (data) {
@@ -49,20 +49,21 @@ $(document).ready(function () {
         })
     });
 
-//     $.ajax(function (d) {
-//         d.preventDefault();
-//         var quest_id = $(d.target).data("aqid");
-//         var ans_id = $(d.target).data("aid");
-//         $.(ajax)
-//         url: "/questions/" + quest_id + "/answer/" + ans_id + "/downvote",
-//             method: "post",
-//             dataType: "json",
-//             // YOU STOP HERE, fucking red lines
+    $('#reply-votedown').submit(function (d) {
+        d.preventDefault();
+        var quest_id = $(d.target).data("aqid");
+        var ans_id = $(d.target).data("aid");
 
-//             success: function (data) {
-//                 $(f.target).find('input').attr('value', 'Upvote | ' + data)
-//             }
+        $.ajax({
+            url: "/questions/" + quest_id + "/answer/" + ans_id + "/downvote",
+            method: "post",
+            dataType: "json",
+            
 
+            success: function (data) {
+                $(f.target).find('input').attr('value', 'Upvote | ' + data)
+            }
 
-//     });
-// });
+        })
+    });
+});
