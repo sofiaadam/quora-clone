@@ -29,6 +29,8 @@
 .signup {
     width: 300px;
 	margin: 0 auto;
+    margin-top: 60px;
+    
 }
 
 .small-log {
@@ -41,4 +43,19 @@ body {
 
 .navbar {
     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+hr { 
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    height: 2px; 
+    border: 0; 
+}
+
+label{
+    display:inline-block;
+    width:100px;
+}
+
+#h2-sign {
+    text-align: center;
 }

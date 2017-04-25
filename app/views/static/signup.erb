@@ -2,15 +2,47 @@
 <% redirect '/users/:id' %>
 <% else %>
 <% logged_in? %>
-<h2>Sign up for an account!</h2>
-<form class="signup" method="post" action="/signup">
-    <input type=text placeholder="Fullname" name="user[fullname]"><br>
-    <input type=text placeholder="Email" name="user[email]"><br>
-    <input type=password placeholder="Password" name="user[password]"><br>
-    <input type=password placeholder="Confirm Password" name="user[password_confirmation]"></br>
-    <input type=submit value="Sign up">
+<h2 id="h2-sign">Sign up for an account!</h2>
+<div class="signup">
+<form class="pure-form pure-form-aligned" method="post" action="/signup">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Fullname</label>
+            <input id="name" type="text" placeholder="Fullname" name="user[fullname]">
+            
+        </div>
+
+        
+        <div class="pure-control-group">
+            <label for="email">Email Address</label>
+            <input id="email" type="email" placeholder="Email Address" name="user[email]">
+        </div>
+        
+        <div class="pure-control-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Password" name="user[password]">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="confirm-password">Password</label>
+            <input id="confirm-password" type="password" placeholder="Confirm password">
+        </div>
+
+        <div class="pure-controls">
+            <div class="pure-checkbox">
+                <input id="cb" type="checkbox"> I've read the terms and conditions
+            </div>
+
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </div>
+    </fieldset>
 </form>
+</div>
 <%end%>
+
+
+
+
 
 
 

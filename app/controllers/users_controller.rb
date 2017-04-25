@@ -9,15 +9,15 @@ end
 post '/signup' do
   @user = User.new(params[:user])
   if @user.save
-    flash[:img] = "<h1>user has been created.</h2>"
-    redirect "/"
+    flash[:img] = "User has been created"
+    redirect '/login'
+    # elsif
+    # flash[:msg] = "Email: " + @user.errors[:email].join(",")
+    # elsif
+    # flash[:msg] = "Password: " + @user.errors[:password].join(",")
     else
-    flash[:img] = "<h2> There is an error </h2>"
-    @err_email = "Email: " + user.errors[:email].join(",")
-    flash[:img] = @err_email
-    @err_pass = "Password: " + user.errors[:password].join(",")
-    flash[:img] = @err_pass
-    erb :"/"
+    flash[:msg] = "There is an error..somewhere"
+    redirect "/signup"
   end
 end  
 
@@ -36,7 +36,7 @@ post '/login' do
       redirect '/'
     else
       flash[:img] = "<h2> Wrong password </h2>"
-      erb :'static/login' #YOU STOP HERE
+      redirect '/login' #YOU STOP HERE
     end
 end
 

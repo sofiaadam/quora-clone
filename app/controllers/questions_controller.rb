@@ -4,10 +4,16 @@ get '/questions' do
     erb :"question/index"
 end
 
-get '/topquestions' do
-    @top_quest = QuestionVotes.all.count('vote_type DESC')
-    erb :"/"
+get '/answers' do
+    @answer = Answer.all.order('updated_at DESC')
+    erb :"/question/show"
 end
+
+get '/answers/:id' do
+    @answer = Answer.find(params[:id])
+    erb :'question/show'
+end
+
 
 
 get '/questions/new' do
